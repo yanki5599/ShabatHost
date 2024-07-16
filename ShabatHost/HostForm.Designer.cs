@@ -31,49 +31,52 @@
             label_host = new Label();
             textBox_inputCategory = new TextBox();
             button_addCategory = new Button();
-            listBox_categories = new ListBox();
+            listView_categoriesList = new ListView();
             SuspendLayout();
             // 
             // label_host
             // 
             label_host.AutoSize = true;
-            label_host.Location = new Point(255, 90);
+            label_host.Font = new Font("Segoe UI", 16F);
+            label_host.Location = new Point(119, 20);
             label_host.Name = "label_host";
-            label_host.Size = new Size(38, 15);
+            label_host.Size = new Size(176, 30);
             label_host.TabIndex = 0;
-            label_host.Text = "label1";
+            label_host.Text = "מארח - קטגוריות";
             // 
             // textBox_inputCategory
             // 
-            textBox_inputCategory.Location = new Point(213, 121);
+            textBox_inputCategory.Font = new Font("Segoe UI", 16F);
+            textBox_inputCategory.Location = new Point(139, 97);
             textBox_inputCategory.Name = "textBox_inputCategory";
-            textBox_inputCategory.Size = new Size(136, 23);
+            textBox_inputCategory.Size = new Size(136, 36);
             textBox_inputCategory.TabIndex = 1;
             // 
             // button_addCategory
             // 
-            button_addCategory.Location = new Point(213, 150);
+            button_addCategory.Font = new Font("Segoe UI", 12F);
+            button_addCategory.Location = new Point(139, 139);
             button_addCategory.Name = "button_addCategory";
             button_addCategory.Size = new Size(136, 37);
             button_addCategory.TabIndex = 2;
-            button_addCategory.Text = "button1";
+            button_addCategory.Text = "הוסף קטגוריה";
             button_addCategory.UseVisualStyleBackColor = true;
+            button_addCategory.Click += button_addCategory_Click;
             // 
-            // listBox_categories
+            // listView_categoriesList
             // 
-            listBox_categories.FormattingEnabled = true;
-            listBox_categories.ItemHeight = 15;
-            listBox_categories.Location = new Point(184, 250);
-            listBox_categories.Name = "listBox_categories";
-            listBox_categories.Size = new Size(181, 139);
-            listBox_categories.TabIndex = 3;
+            listView_categoriesList.Location = new Point(108, 198);
+            listView_categoriesList.Name = "listView_categoriesList";
+            listView_categoriesList.Size = new Size(198, 215);
+            listView_categoriesList.TabIndex = 4;
+            listView_categoriesList.UseCompatibleStateImageBehavior = false;
             // 
             // HostForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(539, 450);
-            Controls.Add(listBox_categories);
+            ClientSize = new Size(412, 450);
+            Controls.Add(listView_categoriesList);
             Controls.Add(button_addCategory);
             Controls.Add(textBox_inputCategory);
             Controls.Add(label_host);
@@ -90,6 +93,6 @@
         private Label label_host;
         private TextBox textBox_inputCategory;
         private Button button_addCategory;
-        private ListBox listBox_categories;
+        private ListView listView_categoriesList;
     }
 }

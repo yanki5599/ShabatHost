@@ -1,6 +1,9 @@
+using Microsoft.Extensions.Configuration;
+using ShabatHost.DAL;
+
 namespace ShabatHost
 {
-    internal static class Program
+    internal class Program
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -11,7 +14,21 @@ namespace ShabatHost
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new HostForm());
+            DBContext dBContext = new DBContext(GetConnString());
+            SeedContext seedContext = new SeedContext(dBContext);
+            seedContext.EnsureDataBaseSetup();
+
+            Application.Run(new HostForm(dBContext));
+        }
+        private static string GetConnString()
+        {
+            var config = new ConfigurationBuilder()
+                        .AddUserSecrets<Program>()
+                        .Build();
+            string? connectionString = config["connectionString"];
+            if (connectionString == null)
+                throw new Exception("Cannot read conn striong from secrets");
+            return connectionString;
         }
     }
 }
