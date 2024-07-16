@@ -55,9 +55,26 @@ namespace ShabatHost.Reposetory
         {
             string query = "INSERT INTO Categories(name) VALUES(@categoryName)";
 
+           /* string q2 = $@"DECLARE @result NVARCHAR(20);
+
+                        IF EXISTS (SELECT 1 FROM Categories WHERE name = @categoryName)
+                        BEGIN
+                            SET @result = 'exists';
+                        END
+                        ELSE
+                        BEGIN
+
+                            INSERT INTO Categories(name) VALUES(@categoryName)
+                        
+                            SET @result = 'added';
+                        END
+                        
+                        SELECT @result AS Result;";*/
+
             var parameter = new SqlParameter("@categoryName", SqlDbType.NVarChar) { Value = entity.Name };
 
             return _dbContext.ExecuteNonQuery(query, parameter) > 0;
+
         }
 
         public bool Update(CategoryModel entity)
