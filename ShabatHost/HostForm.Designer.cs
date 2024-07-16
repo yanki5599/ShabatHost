@@ -32,6 +32,7 @@
             textBox_inputCategory = new TextBox();
             button_addCategory = new Button();
             listView_categoriesList = new ListView();
+            columnHeader1 = new ColumnHeader();
             SuspendLayout();
             // 
             // label_host
@@ -65,14 +66,21 @@
             // 
             // listView_categoriesList
             // 
+            listView_categoriesList.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            listView_categoriesList.Font = new Font("Segoe UI", 12F);
             listView_categoriesList.GridLines = true;
             listView_categoriesList.Location = new Point(108, 198);
             listView_categoriesList.Name = "listView_categoriesList";
             listView_categoriesList.RightToLeftLayout = true;
-            listView_categoriesList.Size = new Size(198, 215);
+            listView_categoriesList.Size = new Size(200, 215);
             listView_categoriesList.TabIndex = 4;
             listView_categoriesList.UseCompatibleStateImageBehavior = false;
-            listView_categoriesList.View = View.List;
+            listView_categoriesList.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "קטגוריות";
+            columnHeader1.Width = 196;
             // 
             // HostForm
             // 
@@ -83,9 +91,12 @@
             Controls.Add(button_addCategory);
             Controls.Add(textBox_inputCategory);
             Controls.Add(label_host);
+            MaximumSize = new Size(428, 489);
+            MinimumSize = new Size(428, 489);
             Name = "HostForm";
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "שבת - מארח";
             ResumeLayout(false);
             PerformLayout();
@@ -97,5 +108,6 @@
         private TextBox textBox_inputCategory;
         private Button button_addCategory;
         private ListView listView_categoriesList;
+        private ColumnHeader columnHeader1;
     }
 }

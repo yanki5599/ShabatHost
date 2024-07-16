@@ -31,6 +31,7 @@ namespace ShabatHost
             if (string.IsNullOrEmpty(catName))
             {
                 MessageBox.Show("cannot be empty.");
+                return;
             }
             bool success = _categoryRepository.Insert(new CategoryModel(catName));
             if (!success)
@@ -46,7 +47,6 @@ namespace ShabatHost
         private void LoadCategoriesList()
         {
             listView_categoriesList.Items.Clear();
-            listView_categoriesList.Columns.Add("קטגוריה");
             List<string> categories = new List<string>();
             foreach(var catModel in _categoryRepository.GetAll())
                 listView_categoriesList.Items.Add(catModel.Name);
