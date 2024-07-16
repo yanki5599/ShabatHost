@@ -65,11 +65,14 @@
             // 
             // listView_categoriesList
             // 
+            listView_categoriesList.GridLines = true;
             listView_categoriesList.Location = new Point(108, 198);
             listView_categoriesList.Name = "listView_categoriesList";
+            listView_categoriesList.RightToLeftLayout = true;
             listView_categoriesList.Size = new Size(198, 215);
             listView_categoriesList.TabIndex = 4;
             listView_categoriesList.UseCompatibleStateImageBehavior = false;
+            listView_categoriesList.View = View.List;
             // 
             // HostForm
             // 

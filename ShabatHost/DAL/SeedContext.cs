@@ -85,7 +85,7 @@ namespace ShabatHost.DAL
                 // Create Guests table if not exists
                 string createGuestsTableQuery = $@"
                 use {DBConfig.databaceName};
-                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = Guests AND type = 'U')
+                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Guests' AND type = 'U')
                 BEGIN
 		        	create table Guests(
 		        		ID int primary key identity,
@@ -98,15 +98,12 @@ namespace ShabatHost.DAL
                 // Create Categories table if not exists
                 string createCategoriesTableQuery = $@"
                 use {DBConfig.databaceName};
-                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = Categories AND type = 'U')
+                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Categories' AND type = 'U')
                 BEGIN
-		        		create table Food(
-		        			ID int primary key identity,
-		        			Guest_ID int foreign key references Guests(ID),
-		        			Category_ID int foreign key references Categories(ID),
-		        			name nvarchar(20),
-		        			constraint AK_CatFoodGuest unique(Guest_ID,Category_ID,name)
-		        		);
+		        		create table Categories(
+                        	ID int primary key identity,
+                        	name nvarchar(20) unique
+                        );
 		        END";
 
                 _dbContext.ExecuteNonQuery(createCategoriesTableQuery);
@@ -114,7 +111,7 @@ namespace ShabatHost.DAL
                 // Create Food table if not exists
                 string createFoodTableQuery = $@"
                 use {DBConfig.databaceName};
-                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = Food AND type = 'U')
+                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Food' AND type = 'U')
                 BEGIN
 		        	create table Food(
 		        		ID int primary key identity,

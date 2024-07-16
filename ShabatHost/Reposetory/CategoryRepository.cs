@@ -24,7 +24,7 @@ namespace ShabatHost.Reposetory
         public List<CategoryModel> GetAll()
         {
             var categories = new List<CategoryModel>();
-            string query = "SELECT ID, Name FROM FoodCategories";
+            string query = "SELECT ID, Name FROM Categories";
 
             DataTable result = _dbContext.ExecuteQuery(query);
             foreach (DataRow row in result.Rows)
@@ -39,7 +39,7 @@ namespace ShabatHost.Reposetory
 
         public CategoryModel? FindById(int id)
         {
-            string query = "SELECT ID, Name FROM FoodCategories fc where fc.ID = @id";
+            string query = "SELECT ID, name FROM Categories fc where fc.ID = @id";
 
             var parameter = new SqlParameter("@id", SqlDbType.Int) { Value = id };
 
@@ -53,7 +53,7 @@ namespace ShabatHost.Reposetory
 
         public bool Insert(CategoryModel entity)
         {
-            string query = "INSET INTO FoodCategories(name) VALUES(@categoryName)";
+            string query = "INSERT INTO Categories(name) VALUES(@categoryName)";
 
             var parameter = new SqlParameter("@categoryName", SqlDbType.NVarChar) { Value = entity.Name };
 

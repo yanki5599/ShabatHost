@@ -47,10 +47,9 @@ namespace ShabatHost
         {
             listView_categoriesList.Items.Clear();
             listView_categoriesList.Columns.Add("קטגוריה");
-            List<ListViewItem> categories = new List<ListViewItem>();
-            _categoryRepository.GetAll().ForEach
-                (category => categories.Add(new ListViewItem(category.Name)));
-            listView_categoriesList.Items.AddRange(categories.ToArray());
+            List<string> categories = new List<string>();
+            foreach(var catModel in _categoryRepository.GetAll())
+                listView_categoriesList.Items.Add(catModel.Name);
         }
     }
 }
